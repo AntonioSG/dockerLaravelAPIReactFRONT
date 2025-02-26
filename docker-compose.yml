@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  # Servicio para Apache PHP
+  api:
+    build:
+      dockerfile: docker/httpd/Dockerfile
+    #restart: unless-stopped
+    #Este puerto no se tiene que mapear, solo aparece para comprobar que funciona la API
+    ports:
+      - "${API_PORT}:80"
+    networks:
+      - laravel_network
+
+  front:
+    build:
+      dockerfile: docker/react/Dockerfile
+    #restart: unless-stopped
+    ports:
+      - "${HTTPD_PORT}:80"
+    networks:
+      - laravel_network
+
+
+networks:
+  laravel_network:
+    driver: bridge

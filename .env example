@@ -1,0 +1,6 @@
+
+# Configuración de APACHE PHP
+HTTPD_PORT=80
+
+# Configuración de phpMyAdmin
+API_PORT=8080
